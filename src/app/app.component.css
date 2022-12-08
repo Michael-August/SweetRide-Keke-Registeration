@@ -32,4 +32,8 @@
         content: '';
         background: rgba(0, 0, 0, 0.3);
     }
+
+    .container::after {
+        box-shadow: inset 70px 50px 200px #000000, inset -70px -50px 200px #000000;
+    }
 }
