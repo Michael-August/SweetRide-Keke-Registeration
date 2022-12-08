@@ -1,0 +1,88 @@
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form>
+        <div class="form-controls">
+            <label for="">Select your Organization <span style="color: red; margin-left: 4px;">*</span></label>
+            <div class="organizations">
+                <div class="ind-org">
+                    <!-- <span *ngIf="toan"><i class="fa fa-check"></i></span> -->
+                    <p class="org" [ngClass]="{'org-selected': toan == true }" (click)="orgSelected('toan')">TOAN</p>
+                </div>
+                <div class="ind-org">
+                    <p class="org" [ngClass]="{'org-selected': oan == true }" (click)="orgSelected('oan')">OAN</p>
+                </div>
+                <div class="ind-org">
+                    <p class="org" [ngClass]="{'org-selected': koan == true }" (click)="orgSelected('koan')">KOAN</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-controls">
+            <label for="">Name <span style="color: red; margin-left: 4px;">*</span></label>
+            <!-- <span class="span">Suna</span> -->
+            <input type="text" formControlName="name" name="" id=""
+                placeholder="Abdulahi Ibrahim">
+            <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+        </div>
+
+        <div class="double-input">
+            <div class="form-controls half">
+                <label for="">State <span style="color: red; margin-left: 4px;">*</span></label>
+                <!-- <span class="span">Suna</span> -->
+                <input type="text" formControlName="state" name="" id="" placeholder="Kano">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+            <div class="form-controls half">
+                <label for="">LGA <span style="color: red; margin-left: 4px;">*</span></label>
+                <input type="text" formControlName="address" name="" id="" placeholder="09887">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+        </div>
+
+        <div class="form-controls">
+            <label for="">Residence Address <span style="color: red; margin-left: 4px;">*</span></label>
+            <!-- <span class="span">Suna</span> -->
+            <input type="text" formControlName="address" name="" id="" placeholder="">
+            <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+        </div>
+
+        <div class="double-input">
+            <div class="form-controls half">
+                <label for="">Unit <span style="color: red; margin-left: 4px;">*</span></label>
+                <!-- <span class="span">Suna</span> -->
+                <input type="text" formControlName="unit" name="" id="" placeholder="">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+            <div class="form-controls half">
+                <label for="">NIN <span style="color: red; margin-left: 4px;">*</span></label>
+                <input type="text" formControlName="address" name="" id="" placeholder="12345678901">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+        </div>
+
+        <div class="double-input">
+            <div class="form-controls half">
+                <label for="">Tricycle NO <span style="color: red; margin-left: 4px;">*</span></label>
+                <!-- <span class="span">Suna</span> -->
+                <input type="text" formControlName="tricycle_no" name="" id="" placeholder="">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+            <div class="form-controls half">
+                <label for="">GSM <span style="color: red; margin-left: 4px;">*</span></label>
+                <input type="text" formControlName="gsm" name="" id="" placeholder="0908765456">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+        </div>
+
+        <div class="form-controls">
+            <label for="">Place of Birth <span style="color: red; margin-left: 4px;">*</span></label>
+            <!-- <span class="span">Suna</span> -->
+            <input type="text" formControlName="kano" name="" id="" placeholder="">
+            <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+        </div>
+
+        <button class="btn">Submit</button>
+
+    </form>
+</div>
