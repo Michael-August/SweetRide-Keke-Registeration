@@ -44,7 +44,7 @@ form {
     position: relative;
 }
 
-.org p:hover {
+.org:hover {
     background: rgb(192, 191, 191);
     border: 1px solid #ffffff;
 }
