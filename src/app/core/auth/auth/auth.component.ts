@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalService } from '../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalService: ModalService) { }
 
   authForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,6 +32,7 @@ export class AuthComponent implements OnInit {
     let userdetails = JSON.stringify(this.authForm.value)
     localStorage.setItem('User', userdetails)
     this.router.navigateByUrl('/home')
+    this.modalService.openModal = true
   }
 
 }
