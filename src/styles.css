@@ -125,7 +125,7 @@ table th {
     h2 {
         font-style: normal;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 18px !important;
         line-height: 34px;
         color: #515352;
     }
