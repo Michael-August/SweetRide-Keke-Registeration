@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalService } from 'src/app/core/services/modal-service/modal.service';
+import { UtilsService } from 'src/app/core/services/modal-service/utils-service/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,37 @@ import { ModalService } from 'src/app/core/services/modal-service/modal.service'
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public modalService: ModalService, private route: Router) { }
+  constructor(public modalService: ModalService, private util: UtilsService,
+    private route: Router) { }
 
   isLoading: boolean = false
+  user: any
+  keke:any
+  search = new FormGroup({
+    plate_number: new FormControl('')
+  })
 
   ngOnInit(): void {
+    this.user = this.util.getLoggedInUser()
+    console.log(this.user)
   }
 
   goToRegister() {
+    console.log(this.user)
+    if (this.user == null){
+      console.log(this.user)
+      alert('Please login first')
+      this.route.navigateByUrl('/login')
+    } else {
+      this.modalService.openModal = true
+    }
+  }
+
+  searchKeke() {
+    this.keke = this.util.getSearchedKeke()
+  }
+
+  registerUser() {
     this.route.navigateByUrl('/register')
     this.modalService.openModal = false
   }

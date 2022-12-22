@@ -3,7 +3,7 @@
         SweetRides Tricycle Drivers
     </h1>
     <p class="paragraph">Register with SweetRide toady and enjoy all ride features!</p>
-    <p (click)="modalService.openModal = true" class="btn">Register</p>
+    <p (click)="goToRegister()" class="btn">Register</p>
 </div>
 
 <div class="overlay" *ngIf="modalService.openModal">
@@ -17,11 +17,14 @@
             <div>
                 <h2>Keke</h2>
             </div>
-            <div class="form-controls">
-                <label for="">Search Keke Plate Number <span style="color: red; margin-left: 4px;">*</span></label>
-                <input type="text" formControlName="plate_number" name="" id="" placeholder="AJ65G">
-                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
-            </div>
+            <form [formGroup]="search" (ngSubmit)="searchKeke()">
+                <div class="form-controls">
+                    <label for="">Search Keke Plate Number <span style="color: red; margin-left: 4px;">*</span></label>
+                    <input type="text" formControlName="plate_number" name="" id="" placeholder="AJ65G">
+                    <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+                </div>
+            </form>
+            
             <!-- <button class="btn">Add Manager</button> -->
         </div>
 
@@ -33,21 +36,19 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Actions</th>
+                        <th>Plate Number</th>
+                        <!-- <th>Actions</th> -->
                     </tr>
                 </thead>
         
                 <tbody>
-                    <tr (click)="goToRegister()">
-                        <td></td>
-                    </tr>
-        
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td style="text-align: center; font-size: 12px;width: 100%;">No records found</td>
-                        <td></td>
-                        <td></td>
+                    <tr style="cursor: pointer;" (click)="registerUser()">
+                        <td>{{keke.id}}</td>
+                        <td>{{keke.name}}</td>
+                        <td>{{keke.email}}</td>
+                        <td>{{keke.phone}}</td>
+                        <td>{{keke.plate_number}}</td>
+                        <!-- <td></td> -->
                     </tr>
         
                     <tr *ngIf="isLoading">
