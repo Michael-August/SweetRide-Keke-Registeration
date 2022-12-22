@@ -10,8 +10,8 @@ export class RegisterComponent implements OnInit {
   constructor() { }
 
   toan: boolean = false
-  oan: boolean = false
-  koan: boolean = false
+  tokan: boolean = false
+  acotmoran: boolean = false
 
   ngOnInit(): void {
   }
@@ -19,22 +19,22 @@ export class RegisterComponent implements OnInit {
   orgSelected(name: string) {
     if(name == 'toan') {
       this.toan = true
-      this.oan = false
-      this.koan = false
+      this.tokan = false
+      this.acotmoran = false
       return;
     }
 
-    if (name == 'oan') {
-      this.oan = true
+    if (name == 'tokan') {
+      this.tokan = true
       this.toan = false
-      this.koan = false
+      this.acotmoran = false
       return;
     }
 
-    if (name == 'koan') {
-      this.koan = true
+    if (name == 'acotmoran') {
+      this.tokan = false
       this.toan = false
-      this.oan = false
+      this.acotmoran = true
       return;
     }
   }

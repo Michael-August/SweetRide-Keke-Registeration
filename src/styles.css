@@ -5,4 +5,102 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: Poppins;
+    width: 100vw;
+}
+
+input {
+    background: #F9F9F9;
+    border: 0.5px solid #EAE8E3;
+    border-radius: 14px;
+    padding: 17px 16px;
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 20px;
+    outline: #1AD364;
+}
+
+.double-input {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.half {
+    width: 50%;
+}
+
+.double-input .half input {
+    width: 93%;
+}
+
+.btn {
+    background-color: #1AD364;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: #455A64;
+}
+
+form {
+    padding: 0 100px;
+    margin-bottom: 100px;
+    /* margin-top: 50px; */
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 34px;
+    color: #515352;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    padding: 15px;
+}
+
+table tbody tr {
+    padding: 15px;
+}
+
+table tbody tr td {
+    padding: 15px;
+}
+
+/* table tr:nth-child(even) {
+    background-color: #f2f2f2;
+} */
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #a1e2bb;
+    color: black;
 }

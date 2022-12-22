@@ -37,8 +37,7 @@
     background: #14a14d;
 }
 
-/* Modal */
-/* .overlay {
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -49,17 +48,31 @@
     align-items: flex-start;
     justify-content: center;
     z-index: 100;
-    animation: fadeIn 0.5s;
 }
 
 .modal-container {
-    background: #e8f0eb;
+    background: #ffffff;
     margin-top: 100px;
     width: 1200px;
-    height: 650px;
+    height: 550px;
     border-radius: 20px;
     padding: 18px 40px;
-} */
+}
+
+.close {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.close img {
+    cursor: pointer;
+}
+
+.form-controls {
+    width: 20%;
+}
 
 @media (min-width: 360px) and (max-width: 500px) {
     .container {

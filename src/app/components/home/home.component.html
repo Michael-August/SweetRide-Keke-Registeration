@@ -1,13 +1,64 @@
 <div class="container">
     <h1>
-        SweetRide Keke Organization Registration
+        SweetRides Tricycle Drivers
     </h1>
     <p class="paragraph">Register with SweetRide toady and enjoy all ride features!</p>
-    <p routerLink="/register" class="btn">Register</p>
+    <p (click)="modalService.openModal = true" class="btn">Register</p>
 </div>
 
-<!-- <div class="overlay">
+<div class="overlay" *ngIf="modalService.openModal">
     <div class="modal-container">
+        <div class="close">
+            <div></div>
+            <img (click)="modalService.openModal = false" src="assets/images/close.png" alt="">
+        </div>
 
+        <div class="header">
+            <div>
+                <h2>Keke</h2>
+            </div>
+            <div class="form-controls">
+                <label for="">Search Keke Plate Number <span style="color: red; margin-left: 4px;">*</span></label>
+                <input type="text" formControlName="plate_number" name="" id="" placeholder="AJ65G">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+            <!-- <button class="btn">Add Manager</button> -->
+        </div>
+
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    <tr (click)="goToRegister()">
+                        <td></td>
+                    </tr>
+        
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: center;">No records found</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+        
+                    <tr *ngIf="isLoading">
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: center;">Please wait!</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div> -->
+</div>
