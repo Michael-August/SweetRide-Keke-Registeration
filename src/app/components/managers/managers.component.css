@@ -1,0 +1,60 @@
+.container {
+    background-color: #e8f0eb;
+    padding: 20px;
+}
+
+.header {
+    /* float: right; */
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table {
+    overflow-x: auto;
+}
+
+/* Modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-container {
+    background: #ffffff;
+    margin-top: 100px;
+    width: 500px;
+    height: 550px;
+    border-radius: 30px;
+    padding: 18px 40px;
+}
+
+.close {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.close img {
+    cursor: pointer;
+}
+
+form {
+    padding-left: 0px;
+}
+
+@media (min-width: 360px) and (max-width: 500px) {
+
+}
+
+

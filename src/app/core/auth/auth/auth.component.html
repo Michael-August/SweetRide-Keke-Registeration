@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Login Form</h2>
+    <form [formGroup]="authForm" (ngSubmit)="login()">
+        <div class="form-controls">
+            <label for="">Email <span style="color: red; margin-left: 4px;">*</span></label>
+            <!-- <span class="span">Suna</span> -->
+            <input type="email" formControlName="email" name="" id="" placeholder="abdulahiibrahim@gmail.com">
+            <div *ngIf="email.touched && email.invalid" class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div>
+        </div>
+
+        <div class="form-controls">
+            <label for="">Password <span style="color: red; margin-left: 4px;">*</span></label>
+            <!-- <span class="span">Suna</span> -->
+            <input type="password" formControlName="password" name="" id="" placeholder="************">
+            <div *ngIf="password.touched && password.invalid" class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div>
+        </div>
+
+        <button [disabled]="authForm.invalid" type="submit" class="btn">Log in</button>
+    </form>
+</div>

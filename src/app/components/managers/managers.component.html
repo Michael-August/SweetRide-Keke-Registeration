@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="header">
+        <div><h2>Managers</h2></div>
+        <button (click)="modalService.openModal = true" class="btn">Add Manager</button>
+    </div>
+
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style="text-align: center;">No records found</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr *ngIf="isLoading">
+                    <td></td>
+                    <td></td>
+                    <td style="text-align: center;">Please wait!</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="overlay" *ngIf="modalService.openModal">
+    <div class="modal-container">
+        <div class="close">
+            <div></div>
+            <img (click)="modalService.openModal = false" src="assets/images/close.png" alt="">
+        </div>
+        <h2>Add Manager</h2>
+
+        <form>
+            <div class="form-controls">
+                <label for="">Email <span style="color: red; margin-left: 4px;">*</span></label>
+                <!-- <span class="span">Suna</span> -->
+                <input type="email" formControlName="email" name="" id="" placeholder="abdulahiibrahim@gmail.com">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+
+            <div class="form-controls">
+                <label for="">Phone <span style="color: red; margin-left: 4px;">*</span></label>
+                <!-- <span class="span">Suna</span> -->
+                <input type="text" formControlName="phone" name="" id="" placeholder="08065432178">
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+
+            <button class="btn">Submit</button>
+        </form>
+    </div>
+</div>
