@@ -4,6 +4,16 @@
     justify-content: space-between;
     height: 10vh;
     padding: 10px 0;
+    z-index: 100;
+}
+
+.sticky {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, .08);
+    margin: 0 -170px;
+    padding: 0 170px;
+    position: fixed;
+    top: 0;
 }
 
 .logo {
@@ -56,6 +66,14 @@
 @media (min-width: 360px) and (max-width: 500px) {
     .nav-bar {
         padding: 4px 0;
+    }
+
+    .sticky {
+        background: none;
+        box-shadow:none;
+        padding: 4px 0px;
+        position: static;
+        top: 0;
     }
 
     .logo {

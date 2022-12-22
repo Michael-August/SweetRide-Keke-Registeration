@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalService } from 'src/app/core/services/modal-service/modal.service';
@@ -23,7 +24,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.util.getLoggedInUser()
-    console.log(this.user)
   }
 
   goToRegister() {
