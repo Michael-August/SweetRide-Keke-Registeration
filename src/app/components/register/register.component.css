@@ -1,6 +1,9 @@
 .container {
     background: #e8f0eb;
-    padding: 10px 20px;
+    margin: 0 -170px;
+    /* margin-top: 100px; */
+    padding: 10px 170px;
+    
 }
 
 .container h2 {
@@ -37,6 +40,11 @@
     border: 1px solid rgb(192, 191, 191);
     cursor: pointer;
     position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.org:active {
+    transform: scale(0.8);
 }
 
 .org:hover {
@@ -56,13 +64,20 @@
 
 @media (min-width: 360px) and (max-width: 500px) {
     .container {
-        padding: 8px 16px;
+        /* padding: 8px 16px; */
+        width: 100vw;
+        margin: 0 0px;
+        margin-left: -14px;
+        margin-top: 0px;
+        padding: 10px 0px;
+        padding-left: 14px;
     }
 
     .container h2 {
         font-weight: 600;
         font-size: 20px;
     }
+    
 
     form {
         padding: 0;
@@ -85,5 +100,12 @@
 
     .double-input .half input {
         width: 80%;
+    }
+
+    .organizations {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2px;
     }
 }

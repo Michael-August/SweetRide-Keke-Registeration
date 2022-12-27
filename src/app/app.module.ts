@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthComponent } from './core/auth/auth/auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ManagersComponent } from './components/managers/managers.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ManagersComponent } from './components/managers/managers.component';
     RegisterComponent,
     AuthComponent,
     ManagersComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

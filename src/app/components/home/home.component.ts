@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   }
 
   goToRegister() {
-    console.log(this.user)
     if (this.user == null){
       console.log(this.user)
       alert('Please login first')

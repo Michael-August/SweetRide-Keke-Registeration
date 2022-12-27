@@ -37,34 +37,6 @@
     background: #14a14d;
 }
 
-.about {
-    width: 78vw;
-    background: white;
-    margin: 0 -170px;
-    margin-top: 100px;
-    padding: 10px 170px;
-}
-
-.about h2 {
-    margin: 30px 0;
-    font-size: 28px;
-}
-
-.about-body {
-    display: flex;
-    /* align-items: center; */
-    gap: 25px;
-}
-
-.about-body h3 {
-    font-size: 20px;
-    line-height: 20px;
-}
-
-.about-body h3, p {
-    color: #515352;
-}
-
 .table {
     overflow-x: auto;
 }
