@@ -37,7 +37,16 @@ export class HomeComponent implements OnInit {
   }
 
   searchKeke() {
-    this.keke = this.util.getSearchedKeke()
+    if(this.keke !== null) {
+      alert('You can regster this driver!')
+      this.route.navigateByUrl('/register')
+      return
+    }
+    if (this.keke == null) {
+      this.keke = this.util.getSearchedKeke()
+      alert('Driver already registered!')
+      return
+    }
   }
 
   registerUser() {
