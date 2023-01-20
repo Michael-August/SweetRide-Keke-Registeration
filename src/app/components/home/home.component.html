@@ -18,10 +18,10 @@
             <div>
                 <h2>Keke</h2>
             </div>
-            <form [formGroup]="search" (ngSubmit)="searchKeke()">
+            <form [formGroup]="searchForm" (ngSubmit)="searchKeke()">
                 <div class="form-controls">
                     <label for="">Search Keke Plate Number or Gray code <span style="color: red; margin-left: 4px;">*</span></label>
-                    <input type="text" formControlName="plate_number" name="" id="" placeholder="AJ65G">
+                    <input type="text" formControlName="search" name="" id="" placeholder="AJ65G">
                     <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
                 </div>
             </form>
@@ -35,20 +35,20 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>Unit</th>
                         <th>Phone</th>
-                        <th>Plate Number</th>
+                        <th>Green Number</th>
                         <!-- <th>Actions</th> -->
                     </tr>
                 </thead>
         
                 <tbody>
-                    <tr style="cursor: pointer;" (click)="registerUser()">
+                    <tr style="cursor: pointer;">
                         <td>{{keke.id}}</td>
                         <td>{{keke.name}}</td>
-                        <td>{{keke.email}}</td>
+                        <td>{{keke.unit}}</td>
                         <td>{{keke.phone}}</td>
-                        <td>{{keke.plate_number}}</td>
+                        <td>{{keke.green_number}}</td>
                         <!-- <td></td> -->
                     </tr>
         

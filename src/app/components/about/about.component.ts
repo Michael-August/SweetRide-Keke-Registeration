@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoints-service.service';
 import { ModalService } from 'src/app/core/services/modal-service/modal.service';
-import { UtilsService } from 'src/app/core/services/modal-service/utils-service/utils.service';
+import { UtilsService } from 'src/app/core/services/utils-service/utils.service';
 
 @Component({
   selector: 'app-about',
@@ -11,14 +12,14 @@ import { UtilsService } from 'src/app/core/services/modal-service/utils-service/
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private title: Title, private modalService: ModalService, private route: Router, private util: UtilsService) { 
+  constructor(private title: Title, private modalService: ModalService, private route: Router, private endpoints: EndpointsServiceService) { 
     
   }
 
   user: any
 
   ngOnInit(): void {
-    this.user = this.util.getLoggedInUser()
+    console.log(this.endpoints.isLoggedIn)
   }
 
   goToRegister() {

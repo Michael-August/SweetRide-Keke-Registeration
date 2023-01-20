@@ -1,28 +1,28 @@
 <div class="container">
     <h2>Registration Form</h2>
 
-    <form>
+    <form [formGroup]="onboardingForm">
         <div class="form-controls">
             <label for="">Select your Organization <span style="color: red; margin-left: 4px;">*</span></label>
             <div class="organizations">
-                <div class="ind-org">
+                <div class="ind-org" *ngFor="let org of organizations">
                     <!-- <span *ngIf="toan"><i class="fa fa-check"></i></span> -->
-                    <p class="org" [ngClass]="{'org-selected': toan == true }" (click)="orgSelected('toan')">TOAN</p>
+                    <p class="org" [ngClass]="{'org-selected': org.selected == true }" (click)="orgSelected(org)">{{ 2 + 2 }}</p>
                 </div>
-                <div class="ind-org">
+                <!-- <div class="ind-org">
                     <p class="org" [ngClass]="{'org-selected': tokan == true }" (click)="orgSelected('tokan')">TOKAN</p>
                 </div>
                 <div class="ind-org">
-                    <p class="org" [ngClass]="{'org-selected': acotmoran == true }" (click)="orgSelected('acotmoran')">ACOTMORAN</p>
-                </div>
+                    <p class="org" [ngClass]="{'org-selected': acotmoran == true }" (click)="orgSelected('acotmoran')">
+                        ACOTMORAN</p>
+                </div> -->
             </div>
         </div>
 
         <div class="form-controls">
             <label for="">Name <span style="color: red; margin-left: 4px;">*</span></label>
             <!-- <span class="span">Suna</span> -->
-            <input type="text" formControlName="name" name="" id=""
-                placeholder="Abdulahi Ibrahim">
+            <input type="text" formControlName="name" name="" id="" placeholder="Abdulahi Ibrahim">
             <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
         </div>
 

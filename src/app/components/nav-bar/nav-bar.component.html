@@ -4,9 +4,9 @@
     </div>
     <div class="nav-items">
         <ul>
-            <li><a routerLink="/home"> Home </a></li>
-            <li><a routerLink="/about">About</a></li>
-            <li><a routerLink="/members">Members</a></li>
+            <li *ngIf="user !== null"><a routerLink="/home"> Home </a></li>
+            <li *ngIf="user !== null"><a routerLink="/about">About</a></li>
+            <li *ngIf="user !== null"><a routerLink="/members">Members</a></li>
             <li *ngIf="user == null" class="reg"><a routerLink="/login" routerLinkActive="active">Log in</a></li>
             <li *ngIf="user !== null" class="reg"><a (click)="goToReg()">Register</a></li>
         </ul>
