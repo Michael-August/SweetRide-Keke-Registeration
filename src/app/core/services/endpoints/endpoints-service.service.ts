@@ -25,4 +25,8 @@ export class EndpointsServiceService {
   organizationsEndpoint() {
     return this.http.get(`${this.BASE_URL}/organizations`)
   }
+
+  onboardingEndpoint(payload: any) {
+    return this.http.post(`${this.BASE_URL}/form`, payload)
+  }
 }

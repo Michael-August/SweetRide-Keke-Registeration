@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoints-service.service';
 import { ModalService } from 'src/app/core/services/modal-service/modal.service';
-import { UtilsService } from 'src/app/core/services/utils-service/utils.service';
+import { NotificationService } from 'src/app/core/services/notification/notification-service.service';
 
 @Component({
   selector: 'app-about',
@@ -12,21 +12,20 @@ import { UtilsService } from 'src/app/core/services/utils-service/utils.service'
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private title: Title, private modalService: ModalService, private route: Router, private endpoints: EndpointsServiceService) { 
+  constructor(private title: Title, private modalService: ModalService, private route: Router, 
+    private endpoints: EndpointsServiceService, private alertService: NotificationService) { 
     
   }
 
   user: any
 
   ngOnInit(): void {
-    console.log(this.endpoints.isLoggedIn)
+    this.user = localStorage.getItem('User')
   }
 
   goToRegister() {
-    console.log(this.user)
     if (this.user == null) {
-      console.log(this.user)
-      alert('Please login first')
+      this.alertService.popUpAlert('Error', `You must be logged in to Register Keke`, 'error', false, 'OK', '#1AD364', undefined)
       this.route.navigateByUrl('/login')
     } else {
       this.modalService.openModal = true
