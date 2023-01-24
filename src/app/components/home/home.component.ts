@@ -37,6 +37,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  showSingleKeke(kekeId: string) {
+    this.route.navigateByUrl(`/keke/${kekeId}`)
+    console.log(kekeId)
+  }
+
   searchKeke() {
     this.isLoading = true
     if (this.searchForm.value['search'] == '') {
@@ -47,6 +52,13 @@ export class HomeComponent implements OnInit {
       if(res.status == true) {
         let results = res['Search results']
         this.keke = results[0]
+        return
+      }
+
+      if (res.status == false) {
+        this.modalService.openModal = false
+        this.alertService.popUpAlert('Info', 'There is no user found, You can go ahead to register this user.', 'info', false, 'OK', '#1AD364', undefined)
+        this.route.navigateByUrl('/register')
       }
       
     }).add(() => this.isLoading = false)

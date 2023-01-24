@@ -15,6 +15,7 @@ import { ManagersComponent } from './components/managers/managers.component';
 import { AboutComponent } from './components/about/about.component';
 import { RequestInterceptor } from './core/interceptors/request/request.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error/error.interceptor';
+import { SingleKekeComponent } from './components/single-keke/single-keke.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ErrorInterceptor } from './core/interceptors/error/error.interceptor';
     AuthComponent,
     ManagersComponent,
     AboutComponent,
+    SingleKekeComponent,
   ],
   imports: [
     BrowserModule,

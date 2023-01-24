@@ -29,4 +29,8 @@ export class EndpointsServiceService {
   onboardingEndpoint(payload: any) {
     return this.http.post(`${this.BASE_URL}/form`, payload)
   }
+
+  showKeke(kekeId: string) {
+    return this.http.get(`${this.BASE_URL}/${kekeId}`)
+  }
 }

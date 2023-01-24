@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoints-service.service';
+import { NotificationService } from 'src/app/core/services/notification/notification-service.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoin
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private endpoints: EndpointsServiceService) { }
+  constructor(private endpoints: EndpointsServiceService, private alertService: NotificationService, private router: Router) { }
 
   organizations: any
   organizationId!: string
@@ -93,9 +95,27 @@ export class RegisterComponent implements OnInit {
     formData.append('guarantor_address', this.onboardingForm.controls['guarantor_address'].value)
     formData.append('guarantor_phone', this.onboardingForm.controls['guarantor_phone'].value)
 
-    this.endpoints.onboardingEndpoint(formData).subscribe(res => {
-
+    this.endpoints.onboardingEndpoint(formData).subscribe((res: any) => {
+      if(res.status == true) {
+        this.alertService.popUpAlert('Success', `${res.message}`, 'success', false, 'OK', '', undefined)
+        this.router.navigateByUrl('/')
+      }
+    }, err => {
+      if(err) {
+        this.alertService.popUpAlert('Error', `${err.error.message}`, 'error', false, 'OK', '', undefined)
+      }
     })
   }
 
 }
+
+
+// keke
+// :
+// { id: "009d7995-fd69-457c-aea6-088190d6f132", name: "wertyu", ward: "ertyui", town: "ertyui",… }
+// message
+// :
+// "form uploaded successfully"
+// status
+// :
+// true

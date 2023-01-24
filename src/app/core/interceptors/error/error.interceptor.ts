@@ -28,6 +28,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (err.status == 500) {
           this.alertService.popUpAlert('Error', 'Something went wrong, try again later', 'error', false, 'Ok', undefined, undefined)
         }
+        if (err.status == 0) {
+          this.alertService.popUpAlert('Error', 'Check your internet connection', 'error', false, 'Ok', undefined, undefined)
+        }
         return throwError(err);
       })
     );

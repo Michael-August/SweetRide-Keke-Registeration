@@ -1,0 +1,36 @@
+.contaner {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.info {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    width: 45%;
+    border-radius: 12px;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    width: 15%;
+    margin-right: 15px;
+}
+
