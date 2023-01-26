@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 // import { environment } from '../../../../environments/environment'
 import { environment } from '../../../../environments/environment.prod'
 
@@ -10,7 +11,7 @@ export class EndpointsServiceService {
 
   BASE_URL = environment.BASE_URL
   
-  isLoggedIn: boolean = false
+  isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   constructor( private  http: HttpClient) { }
 
