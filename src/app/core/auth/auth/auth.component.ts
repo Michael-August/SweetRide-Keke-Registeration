@@ -42,7 +42,7 @@ export class AuthComponent implements OnInit {
         let user = JSON.stringify(res.user)
         localStorage.setItem('User', user)
         this.endpoints.isLoggedIn = true
-        this.router.navigate(['/'])
+        this.router.navigateByUrl('/home')
       }
     }, err => {
       console.log(err)
