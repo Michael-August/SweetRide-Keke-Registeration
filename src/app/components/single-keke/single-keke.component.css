@@ -34,3 +34,37 @@ img {
     margin-right: 15px;
 }
 
+.key {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 140%;
+    color: #97ADB6;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 136%;
+    display: flex;
+    align-items: center;
+    color: #455A64;
+    margin-bottom: 0px;
+}
+
+.name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    color: #3E4958;
+    margin-top: 0.5rem;
+    margin-bottom: -0.1rem
+}
+

@@ -108,14 +108,3 @@ export class RegisterComponent implements OnInit {
   }
 
 }
-
-
-// keke
-// :
-// { id: "009d7995-fd69-457c-aea6-088190d6f132", name: "wertyu", ward: "ertyui", town: "ertyui",… }
-// message
-// :
-// "form uploaded successfully"
-// status
-// :
-// true
