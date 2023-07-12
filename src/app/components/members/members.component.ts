@@ -42,7 +42,7 @@ export class MembersComponent implements OnInit {
         if (arg.value) {
           this.endpointsSrv.deleteMember(member.id).subscribe((res: any) => {
             if(res.status == true) {
-              this.alertService.popUpAlert('Deleted', `${res.message}`)
+              this.alertService.popUpAlert('Deleted', `${res.message}`, 'success', false, 'OK', '#1AD364', undefined)
               this.getMembers()
             }
           }, err => {
