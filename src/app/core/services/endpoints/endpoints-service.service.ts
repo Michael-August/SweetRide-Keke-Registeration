@@ -52,6 +52,6 @@ export class EndpointsServiceService {
   }
 
   deleteMember(memberId: any) {
-    return this.http.delete(`${this.BASE_URL}/delete/${memberId}`)
+    return this.http.post(`${this.BASE_URL}/delete/${memberId}`, {})
   }
 }
