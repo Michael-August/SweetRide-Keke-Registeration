@@ -16,6 +16,7 @@ import { AboutComponent } from './components/about/about.component';
 import { RequestInterceptor } from './core/interceptors/request/request.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error/error.interceptor';
 import { SingleKekeComponent } from './components/single-keke/single-keke.component';
+import { DottedComponent } from './components/dotted-loader/dotted.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SingleKekeComponent } from './components/single-keke/single-keke.compon
     MembersComponent,
     AboutComponent,
     SingleKekeComponent,
+    DottedComponent
   ],
   imports: [
     BrowserModule,

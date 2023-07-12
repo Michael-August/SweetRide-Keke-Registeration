@@ -1,6 +1,7 @@
-.contaner {
+.container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -39,7 +40,7 @@ img {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 20px;
     line-height: 140%;
     color: #97ADB6;
     margin-bottom: 5px;
@@ -49,7 +50,7 @@ img {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 25px;
     line-height: 136%;
     display: flex;
     align-items: center;
@@ -67,5 +68,25 @@ img {
     color: #3E4958;
     margin-top: 0.5rem;
     margin-bottom: -0.1rem
+}
+
+@media (min-width: 360px) and (max-width: 500px) {
+
+    .container {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .key {
+        font-size: 15px;
+    }
+
+    .value {
+        font-size: 20px;
+    }
 }
 

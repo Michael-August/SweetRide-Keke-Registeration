@@ -15,6 +15,7 @@
             <div *ngIf="password.touched && password.invalid" class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div>
         </div>
 
-        <button [disabled]="authForm.invalid" type="submit" class="btn">Log in</button>
+        <button *ngIf="!isLoading" [disabled]="authForm.invalid" type="submit" class="btn">Log in</button>
+        <app-dotted *ngIf="isLoading"></app-dotted>
     </form>
 </div>

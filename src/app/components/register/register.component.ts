@@ -14,7 +14,9 @@ import { UtilsService } from 'src/app/core/services/utils-service/utils.service'
 export class RegisterComponent implements OnInit {
 
   constructor(private endpoints: EndpointsServiceService, private alertService: NotificationService, 
-    private router: Router, private utilSrv: UtilsService) { }
+    private router: Router, private utilSrv: UtilsService) { 
+      this.memberId = this.utilSrv.objectId
+    }
 
   organizations: any
   organizationId!: string
@@ -27,6 +29,9 @@ export class RegisterComponent implements OnInit {
 
   memberId: any
   member: any
+  memberToEdit: any
+
+  isLoading: boolean = false
 
   onboardingForm = new FormGroup({
     avatar: new FormControl('', Validators.required),
@@ -53,18 +58,32 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.getOrganizations()
     this.getStates()
-
-    this.memberId = this.utilSrv.objectId
     
     if(this.memberId) {
       this.getMember(this.memberId)
-      this.onboardingForm.patchValue(this.member)
     }
   }
 
   getMember(memberId: any) {
     this.endpoints.getMember(memberId).subscribe((res: any) => {
       this.member = res.data
+      delete this.member.avatar
+
+      this.memberToEdit = {
+        ...this.member, 
+        // avatar: this.member.avatar,
+        state: this.member.state.id,
+        lga: this.member.lga.id,
+        organization: this.member.union.id,
+        // guarantor_avatar: this.member.guarantor.avatar,
+        guarantor_name: this.member.guarantor.name, 
+        guarantor_address: this.member.guarantor.address, 
+        guarantor_phone: this.member.guarantor.phone 
+      }
+
+      this.getCities(this.memberToEdit.state)
+      this.onboardingForm.patchValue(this.memberToEdit)
+      console.log(this.onboardingForm.value)
     })
   }
 
@@ -128,21 +147,43 @@ export class RegisterComponent implements OnInit {
     formData.append('reg_number', this.onboardingForm.controls['reg_number'].value)
     formData.append('id_number', this.onboardingForm.controls['id_number'].value)
     formData.append('phone', this.onboardingForm.controls['phone'].value)
-    formData.append('organization', this.organizationId)
+    formData.append('union', this.organizationId)
     formData.append('guarantor_name', this.onboardingForm.controls['guarantor_name'].value)
     formData.append('guarantor_address', this.onboardingForm.controls['guarantor_address'].value)
     formData.append('guarantor_phone', this.onboardingForm.controls['guarantor_phone'].value)
 
-    this.endpoints.onboardingEndpoint(formData).subscribe((res: any) => {
-      if(res.status == true) {
-        this.alertService.popUpAlert('Success', `${res.message}`, 'success', false, 'OK', '', undefined)
-        this.router.navigateByUrl('/')
+    if(!this.memberId) {
+      this.isLoading = true
+      this.endpoints.onboardingEndpoint(formData).subscribe((res: any) => {
+        if(res.status == true) {
+          this.alertService.popUpAlert('Success', `${res.message}`, 'success', false, 'OK', '', undefined)
+          this.router.navigateByUrl('/')
+        }
+      }, err => {
+        if(err) {
+          this.alertService.popUpAlert('Error', `${err.error.message}`, 'error', false, 'OK', '', undefined)
+        }
+      }).add(() => this.isLoading = false)
+    } else {
+      this.isLoading = true
+
+      let payload = {
+        ...this.onboardingForm.value,
+        avatar: this.member.avatar,
+        guarantor_avatar: this.member.guarantor.avatar
       }
-    }, err => {
-      if(err) {
-        this.alertService.popUpAlert('Error', `${err.error.message}`, 'error', false, 'OK', '', undefined)
-      }
-    })
+
+      this.endpoints.editMember(this.memberId, payload).subscribe((res: any) => {
+        if(res.status == true) {
+          this.alertService.popUpAlert('Success', `${res.message}`, 'success', false, 'OK', '', undefined)
+          this.router.navigateByUrl('/')
+        }
+      }, err => {
+        if(err) {
+          this.alertService.popUpAlert('Error', `${err.error.message}`, 'error', false, 'OK', '', undefined)
+        }
+      }).add(() => this.isLoading = false)
+    }
   }
 
 }

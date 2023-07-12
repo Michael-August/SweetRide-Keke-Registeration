@@ -33,13 +33,9 @@ export class SingleKekeComponent implements OnInit {
     this.isLoading = true
 
     this.endpoint.getMember(id).subscribe((res: any) => {
-      console.log(res)
       this.foundKeke = res.data
       this.driverAvatar = `${this.base_url}/${this.foundKeke.avatar.url}`
       this.guarantorAvatar = `${this.base_url}/${this.foundKeke.guarantor.avatar.url}`
-
-      console.log(this.driverAvatar)
-      console.log(this.guarantorAvatar)
     })
   }
   
