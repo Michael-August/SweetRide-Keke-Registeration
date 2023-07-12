@@ -24,7 +24,7 @@
                     <td>{{member.phone}}</td>
                     <td>
                         <div class="icons">
-                            <img src="assets/images/edit.png" alt="">
+                            <img (click)="editMember(member.id)" src="assets/images/edit.png" alt="">
                             <img (click)="deleteMember(member)" src="assets/images/trash.png" alt="">
                             <img (click)="showSingleMember(member.id)" src="assets/images/externallink.png" alt="">
                         </div>

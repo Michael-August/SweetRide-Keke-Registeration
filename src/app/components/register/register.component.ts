@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   cities: any[] = []
 
   memberId: any
+  member: any
 
   onboardingForm = new FormGroup({
     avatar: new FormControl('', Validators.required),
@@ -53,10 +54,18 @@ export class RegisterComponent implements OnInit {
     this.getOrganizations()
     this.getStates()
 
-    // this.memberId
-    if(this.utilSrv.objectId) {
-      
+    this.memberId = this.utilSrv.objectId
+    
+    if(this.memberId) {
+      this.getMember(this.memberId)
+      this.onboardingForm.patchValue(this.member)
     }
+  }
+
+  getMember(memberId: any) {
+    this.endpoints.getMember(memberId).subscribe((res: any) => {
+      this.member = res.data
+    })
   }
 
   getStates() {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoints-service.service';
 import { ModalService } from 'src/app/core/services/modal-service/modal.service';
 import { AlertType, NotificationService } from 'src/app/core/services/notification/notification-service.service';
+import { UtilsService } from 'src/app/core/services/utils-service/utils.service';
 
 @Component({
   selector: 'app-members',
@@ -12,7 +13,7 @@ import { AlertType, NotificationService } from 'src/app/core/services/notificati
 export class MembersComponent implements OnInit {
 
   constructor(public modalService: ModalService, private endpointsSrv: EndpointsServiceService, 
-    private route: Router, private alertService: NotificationService) { }
+    private route: Router, private alertService: NotificationService, private utilSrv: UtilsService) { }
 
   isLoading: boolean = false
   members: any[] = []
@@ -33,7 +34,8 @@ export class MembersComponent implements OnInit {
   }
 
   editMember(memberId: any) {
-
+    this.utilSrv.objectId = memberId
+    this.route.navigateByUrl('/register')
   }
 
   deleteMember(member: any) {
