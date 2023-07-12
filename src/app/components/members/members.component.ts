@@ -40,7 +40,13 @@ export class MembersComponent implements OnInit {
     (this.alertService.popUpAlert('Deleting', `Are you sure you want to delete ${member.name}?`,
       AlertType.Confirm, true, 'Delete') as Promise<any>).then((arg) => {
         if (arg.value) {
-          
+          this.endpointsSrv.deleteMember(member.id).subscribe((res: any) => {
+            if(res.status == true) {
+              this.alertService.popUpAlert('Deleted', `${res.message}`)
+            }
+          }, err => {
+            
+          })
         }
       }
     );

@@ -19,7 +19,9 @@ export class NavBarComponent implements OnInit, OnChanges {
   loggedIn: any
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem('User') || '')
+    this.user = localStorage.getItem('User')
+    console.log(this.user)
+    console.log('this.user')
     this.endpoints.isLoggedIn$.asObservable().subscribe(res => this.loggedIn = res)
   }
 

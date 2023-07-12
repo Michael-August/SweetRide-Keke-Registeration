@@ -51,7 +51,7 @@ export class EndpointsServiceService {
     return this.http.get(`${this.BASE_URL}/${stateId}/cities`)
   }
 
-  deleteMember() {
-
+  deleteMember(memberId: any) {
+    return this.http.delete(`${this.BASE_URL}/delete/${memberId}`)
   }
 }
