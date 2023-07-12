@@ -41,7 +41,7 @@ export class AuthComponent implements OnInit {
         localStorage.setItem('kekeToken', res.token)
         let user = JSON.stringify(res.user)
         localStorage.setItem('User', user)
-        this.router.navigateByUrl('/home')
+        this.router.navigateByUrl('/home').then(() => window.location.reload())
         this.endpoints.isLoggedIn$.next(true)
       }
       if (res.status == false) {

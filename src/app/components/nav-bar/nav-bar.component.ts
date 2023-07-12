@@ -39,7 +39,7 @@ export class NavBarComponent implements OnInit, OnChanges {
   logout() {
     localStorage.clear()
     this.endpoints.isLoggedIn$.next(false)
-    this.route.navigateByUrl('/login')
+    this.route.navigateByUrl('/login').then(() => window.location.reload())
   }
 
 }
