@@ -19,13 +19,11 @@ export class NavBarComponent implements OnInit, OnChanges {
   loggedIn: any
 
   ngOnInit(): void {
-    this.user = localStorage.getItem('User')
+    this.user = JSON.parse(localStorage.getItem('User') || '')
     this.endpoints.isLoggedIn$.asObservable().subscribe(res => this.loggedIn = res)
-    console.log(this.loggedIn)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
   }
 
   goToReg() {
@@ -34,6 +32,7 @@ export class NavBarComponent implements OnInit, OnChanges {
       this.route.navigateByUrl('/login')
     } else {
       this.modalService.openModal = true
+      // this.route.navigateByUrl('/register')
     }
   }
   

@@ -20,10 +20,30 @@
         </div>
 
         <div class="form-controls">
-            <label for="">Name <span style="color: red; margin-left: 4px;">*</span></label>
+            <label for="">Fullname <span style="color: red; margin-left: 4px;">*</span></label>
             <!-- <span class="span">Suna</span> -->
             <input type="text" formControlName="name" name="" id="" placeholder="Abdulahi Ibrahim">
             <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+        </div>
+
+        <div class="double-input">
+            <div class="form-controls half">
+                <label for="">State <span style="color: red; margin-left: 4px;">*</span></label>
+                <!-- <span class="span">Suna</span> -->
+                <select formControlName="state" (change)="changed($event)" name="" id="">
+                    <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                </select>
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
+            
+            <div class="form-controls half">
+                <label for="">LGA <span style="color: red; margin-left: 4px;">*</span></label>
+                <!-- <span class="span">Suna</span> -->
+                <select formControlName="lga" name="" id="">
+                    <option *ngFor="let lga of cities" [value]="lga.id">{{lga.name}}</option>
+                </select>
+                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+            </div>
         </div>
 
         <div class="double-input">
@@ -41,14 +61,7 @@
         </div>
 
         <div class="form-controls">
-            <label for="">LGA <span style="color: red; margin-left: 4px;">*</span></label>
-            <!-- <span class="span">Suna</span> -->
-            <input type="text" formControlName="lga" name="" id="" placeholder="">
-            <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
-        </div>
-
-        <div class="form-controls">
-            <label for="">Full Address <span style="color: red; margin-left: 4px;">*</span></label>
+            <label for="">Address <span style="color: red; margin-left: 4px;">*</span></label>
             <!-- <span class="span">Suna</span> -->
             <input type="text" formControlName="address" name="" id="" placeholder="">
             <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
@@ -59,7 +72,9 @@
                 <label for="">Phone Number <span style="color: red; margin-left: 4px;">*</span></label>
                 <!-- <span class="span">Suna</span> -->
                 <input type="text" formControlName="phone" name="" id="" placeholder="">
-                <!-- <div class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div> -->
+                <div *ngIf="onboardingForm.controls['phone'].touched || onboardingForm.controls['phone'].invalid" class="validate" style="color: red; margin-top: -18px; margin-bottom: 20px;">Required</div>
+                <div *ngIf="onboardingForm.controls['phone'].hasError('maxlength') || onboardingForm.controls['phone'].hasError('minlength')" class="validate"
+                    style="color: red; margin-top: -18px; margin-bottom: 20px;">Phone number must be 11 digits</div>
             </div>
             <div class="form-controls half">
                 <label for="">Date of birth <span style="color: red; margin-left: 4px;">*</span></label>

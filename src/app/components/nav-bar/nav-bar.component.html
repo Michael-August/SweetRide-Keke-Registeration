@@ -5,11 +5,11 @@
     <div class="nav-items">
         <ul>
             <li><a routerLink="/home"> Home </a></li>
-            <li *ngIf="loggedIn || user !== null"><a routerLink="/about">About</a></li>
-            <li *ngIf="loggedIn || user !== null"><a routerLink="/members">Members</a></li>
-            <li *ngIf="loggedIn == false || user == null" class="reg"><a routerLink="/login" routerLinkActive="active">Log in</a></li>
-            <li *ngIf="loggedIn || user !== null" class="reg logout"><a (click)="logout()">Log out</a></li>
-            <li *ngIf="loggedIn || user !== null" class="reg"><a (click)="goToReg()">Register</a></li>
+            <li *ngIf="loggedIn || user"><a routerLink="/about">About</a></li>
+            <li *ngIf="loggedIn || user"><a routerLink="/members">Members</a></li>
+            <li *ngIf="user == null" class="reg"><a routerLink="/login" routerLinkActive="active">Log in</a></li>
+            <li *ngIf="loggedIn || user" class="reg logout"><a (click)="logout()">Log out</a></li>
+            <li *ngIf="loggedIn || user" class="reg"><a (click)="goToReg()">Register</a></li>
         </ul>
     </div>
 </div>

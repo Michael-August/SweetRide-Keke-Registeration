@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoints-service.service';
 import { NotificationService } from 'src/app/core/services/notification/notification-service.service';
+import { UtilsService } from 'src/app/core/services/utils-service/utils.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ import { NotificationService } from 'src/app/core/services/notification/notifica
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private endpoints: EndpointsServiceService, private alertService: NotificationService, private router: Router) { }
+  constructor(private endpoints: EndpointsServiceService, private alertService: NotificationService, 
+    private router: Router, private utilSrv: UtilsService) { }
 
   organizations: any
   organizationId!: string
@@ -20,11 +22,17 @@ export class RegisterComponent implements OnInit {
   guarantorAvatar: any
   maxImageErrorMessage!: string
 
+  states: any[] = []
+  cities: any[] = []
+
+  memberId: any
+
   onboardingForm = new FormGroup({
     avatar: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     ward: new FormControl('', Validators.required),
     town: new FormControl('', Validators.required),
+    state: new FormControl('', Validators.required),
     lga: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     dob: new FormControl('', Validators.required),
@@ -33,7 +41,7 @@ export class RegisterComponent implements OnInit {
     nin: new FormControl('', Validators.required),
     reg_number: new FormControl('', Validators.required),
     id_number: new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
+    phone: new FormControl('', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]),
     organization: new FormControl('', Validators.required),
     guarantor_avatar: new FormControl('', Validators.required),
     guarantor_name: new FormControl('', Validators.required),
@@ -43,11 +51,33 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrganizations()
+    this.getStates()
+
+    // this.memberId
+    if(this.utilSrv.objectId) {
+      
+    }
+  }
+
+  getStates() {
+    this.endpoints.getStates().subscribe((res: any) => {
+      this.states = res.data
+    })
+  }
+
+  getCities(stateId: any) {
+    this.endpoints.getCities(stateId).subscribe((res: any) => {
+      this.cities = res.data
+    })
+  }
+
+  changed(data: any) {
+    this.getCities(this.onboardingForm.controls['state'].value)
   }
 
   getOrganizations() {
     this.endpoints.organizationsEndpoint().subscribe((res: any) => {
-      this.organizations = res.organization
+      this.organizations = res.data
       this.organizations.forEach((org: any) => org.selected = false)
     })
   }
@@ -55,13 +85,11 @@ export class RegisterComponent implements OnInit {
   processAvatarUpload(event: any, fieldName: string) {
     if(fieldName == 'avatar') {
       this.avatar = event.target.files[0]
-      console.log(this.avatar)
       return
     }
 
     if (fieldName == 'guarantorAvatar') {
       this.guarantorAvatar = event.target.files[0]
-      console.log(this.guarantorAvatar)
       return
     }
   }
@@ -81,6 +109,7 @@ export class RegisterComponent implements OnInit {
     formData.append('name', this.onboardingForm.controls['name'].value)
     formData.append('ward', this.onboardingForm.controls['ward'].value)
     formData.append('town', this.onboardingForm.controls['town'].value)
+    formData.append('state', this.onboardingForm.controls['state'].value)
     formData.append('lga', this.onboardingForm.controls['lga'].value)
     formData.append('address', this.onboardingForm.controls['address'].value)
     formData.append('dob', this.onboardingForm.controls['dob'].value)

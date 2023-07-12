@@ -15,6 +15,18 @@
     overflow-x: auto;
 }
 
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icons img {
+    width: 20px;
+    cursor: pointer;
+}
+
 /* Modal */
 .overlay {
     position: fixed;

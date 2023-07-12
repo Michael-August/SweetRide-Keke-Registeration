@@ -1,8 +1,9 @@
 <div class="contaner">
     <div class="keke-info info">
-        <h1>Keke Info</h1>
+        <h1>Driver Info</h1>
         <div class="avatar">
-            <img src="assets/images/no-avatar.webp" alt="">
+            <img *ngIf="!foundKeke.avatar" src="assets/images/no-avatar.webp" alt="">
+            <img *ngIf="foundKeke.avatar" [src]="driverAvatar" alt="">
             <div class="detail">
                 <span class="name">{{ foundKeke.name }}</span>
                 <span class="phone">{{ foundKeke.phone }}</span>
@@ -19,7 +20,7 @@
         
             <div class="detail">
                 <span class="key">LGA</span>
-                <span class="value">{{ foundKeke.lga }}</span>
+                <span class="value">{{ foundKeke.lga.name }}</span>
             </div>
         </div>
 
@@ -42,7 +43,7 @@
         <div class="details">
             <div class="detail">
                 <span class="key">Organization</span>
-                <span class="value">{{foundKeke.organization.name}}</span>
+                <span class="value">{{foundKeke.union.name}}</span>
             </div>
         
             <div class="detail">
@@ -83,10 +84,11 @@
     <div class="guarantor_info info">
         <h1>Guarantor Info</h1>
         <div class="avatar">
-            <img src="assets/images/no-avatar.webp" alt="">
+            <img *ngIf="!foundKeke.avatar" src="assets/images/no-avatar.webp" alt="">
+            <img *ngIf="foundKeke.avatar" [src]="guarantorAvatar" alt="">
             <div class="detail">
-                <span class="name">{{foundKeke.guarantor_name}}</span>
-                <span class="phone">{{foundKeke.guarantor_phone}}</span>
+                <span class="name">{{foundKeke.guarantor.name}}</span>
+                <span class="phone">{{foundKeke.guarantor.phone}}</span>
             </div>
         </div>
 

@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthComponent } from './core/auth/auth/auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ManagersComponent } from './components/managers/managers.component';
+import { MembersComponent } from './components/members/members.component';
 import { AboutComponent } from './components/about/about.component';
 import { RequestInterceptor } from './core/interceptors/request/request.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error/error.interceptor';
@@ -24,7 +24,7 @@ import { SingleKekeComponent } from './components/single-keke/single-keke.compon
     HomeComponent,
     RegisterComponent,
     AuthComponent,
-    ManagersComponent,
+    MembersComponent,
     AboutComponent,
     SingleKekeComponent,
   ],

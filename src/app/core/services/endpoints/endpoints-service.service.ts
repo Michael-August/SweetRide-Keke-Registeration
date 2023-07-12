@@ -20,7 +20,7 @@ export class EndpointsServiceService {
   }
 
   searchEndpoint(payload: any) {
-    return this.http.post(`${this.BASE_URL}/search`, payload)
+    return this.http.post(`${this.BASE_URL}/query`, payload)
   }
 
   organizationsEndpoint() {
@@ -28,10 +28,30 @@ export class EndpointsServiceService {
   }
 
   onboardingEndpoint(payload: any) {
-    return this.http.post(`${this.BASE_URL}/form`, payload)
+    return this.http.post(`${this.BASE_URL}/create/member`, payload)
   }
 
-  showKeke(kekeId: string) {
-    return this.http.get(`${this.BASE_URL}/${kekeId}`)
+  editMember(memberId: any, payload: any) {
+    return this.http.post(`${this.BASE_URL}/edit/${memberId}`, payload)
+  }
+
+  getMembers() {
+    return this.http.get(`${this.BASE_URL}/members/all`)
+  }
+
+  getMember(memberId: string) {
+    return this.http.get(`${this.BASE_URL}/${memberId}`)
+  }
+
+  getStates() {
+    return this.http.get(`${this.BASE_URL}/states`)
+  }
+
+  getCities(stateId: any) {
+    return this.http.get(`${this.BASE_URL}/${stateId}/cities`)
+  }
+
+  deleteMember() {
+
   }
 }

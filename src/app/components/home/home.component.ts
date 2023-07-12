@@ -19,13 +19,13 @@ export class HomeComponent implements OnInit {
 
   isLoading: boolean = false
   user: any
-  keke: any
+  member: any
   searchForm = new FormGroup({
     search: new FormControl('')
   })
 
   ngOnInit(): void {
-    this.user = localStorage.getItem('User')
+    this.user = JSON.parse(localStorage.getItem('User') || '')
   }
 
   goToRegister() {
@@ -37,9 +37,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  showSingleKeke(kekeId: string) {
-    this.route.navigateByUrl(`/keke/${kekeId}`)
-    console.log(kekeId)
+  showSingleMember(memberId: string) {
+    this.route.navigateByUrl(`/member/${memberId}`)
   }
 
   searchKeke() {
@@ -49,16 +48,17 @@ export class HomeComponent implements OnInit {
       return
     } 
     this.endpoints.searchEndpoint(this.searchForm.value).subscribe((res: any) => {
-      if(res.status == true) {
-        let results = res['Search results']
-        this.keke = results[0]
-        return
-      }
-
-      if (res.status == false) {
+      if (res.status == true && res.data.length == 0) {
         this.modalService.openModal = false
         this.alertService.popUpAlert('Info', 'There is no user found, You can go ahead to register this user.', 'info', false, 'OK', '#1AD364', undefined)
         this.route.navigateByUrl('/register')
+        return
+      }
+
+      if(res.status == true) {
+        let results = res.data
+        this.member = results[0]
+        return
       }
       
     }).add(() => this.isLoading = false)

@@ -7,6 +7,8 @@ export class UtilsService {
 
   constructor() { }
 
+  objectId: any
+
   user: any
   keke = {
   }

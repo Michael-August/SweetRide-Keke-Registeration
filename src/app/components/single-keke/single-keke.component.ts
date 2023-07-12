@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoints-service.service';
 
+import { environment } from '../../../environments/environment.prod'
+
 @Component({
   selector: 'app-single-keke',
   templateUrl: './single-keke.component.html',
@@ -9,7 +11,13 @@ import { EndpointsServiceService } from 'src/app/core/services/endpoints/endpoin
 })
 export class SingleKekeComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private endpoint: EndpointsServiceService) { }
+  base_url = ''
+  driverAvatar = ''
+  guarantorAvatar = ''
+
+  constructor(private activatedRoute: ActivatedRoute, private endpoint: EndpointsServiceService) {
+    this.base_url = environment.avatar_URL
+   }
 
   kekeId: any
   foundKeke: any
@@ -24,63 +32,15 @@ export class SingleKekeComponent implements OnInit {
   getSingleKeke(id: string) {
     this.isLoading = true
 
-    this.endpoint.showKeke(id).subscribe((res: any) => {
+    this.endpoint.getMember(id).subscribe((res: any) => {
       console.log(res)
-      this.foundKeke = res.Keke
+      this.foundKeke = res.data
+      this.driverAvatar = `${this.base_url}/${this.foundKeke.avatar.url}`
+      this.guarantorAvatar = `${this.base_url}/${this.foundKeke.guarantor.avatar.url}`
+
+      console.log(this.driverAvatar)
+      console.log(this.guarantorAvatar)
     })
   }
-
-  // address
-  //   :
-  //   "sdfbdsjfs"
-  // avatar
-  //   :
-  //   null
-  // dob
-  //   :
-  //   "djfdsjfsdf"
-  // green_number
-  //   :
-  //   "3232329"
-  // guarantor
-  //   :
-  //   null
-  // id
-  //   :
-  //   "9d1fee3f-d80c-48bf-9598-30bc32598e41"
-  // id_number
-  //   :
-  //   "kdskjskdskdsjd"
-  // lga
-  //   :
-  //   "ksdfjkhdks"
-  // name
-  //   :
-  //   "hdjshfd"
-  // nin
-  //   :
-  //   "kdsjhfdskf"
-  // organization
-  //   :
-  //   { id: "5ba843ca-5d70-479b-980a-bf17c33de4ae", name: "NACTOMORAS", created_at: null, updated_at: null }
-  // phone
-  //   :
-  //   "0487464644"
-  // reg_number
-  //   :
-  //   "kjdsjdkskd"
-  // town
-  //   :
-  //   "dkfsdkf"
-  // unit
-  //   :
-  //   "kdhk"
-  // user
-  //   :
-  //   { id: "cf5abc38-99a9-4c09-940d-ddef3237cd18", name: "Usman Gunu", email: "info@sweetride.ng",… }
-  // ward
-  //   :
-  //   "sdjkfhsdkfj"
   
-
 }
